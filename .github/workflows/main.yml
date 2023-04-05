@@ -37,8 +37,8 @@
         - name: login to docker hub
           uses: docker/login-action@v1
           with:
-            username: ${{ DOCKER_HUB_USERNAME }}
-            password: ${{ DOCKER_HUB_ACCESS_TOKEN }}
+            username: ${{ secrets.DOCKER_HUB_USERNAME }}
+            password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
         - name: push the docker image to docker hub
           uses: docker/build-push-actions@v2
@@ -46,4 +46,4 @@
             context: .
             dockerfile: Dockerfile
             push: true
-            tags: ${{ secrefts.DOCKER_HUB_USERNAME }}/rest-api:latest
+            tags: ${{ secrets.DOCKER_HUB_USERNAME }}/rest-api:latest
