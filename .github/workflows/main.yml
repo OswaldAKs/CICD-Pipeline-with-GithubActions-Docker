@@ -21,7 +21,29 @@
         - name: unit tests
           run: mvn -B test --file pom.xml
 
-        - name: buld the app
+        - name: build the app
           run: |
             mvn clean
             mvn -B package --file pom.xml
+
+        - name: build the docker image
+          uses: docker/build-push-actions@v2
+          with:
+            context: .
+            dockerfile: Dockerfile
+            push: false
+            tags: ${{ secrets.DOCKER_HUB_USERNAME }}/rest-api:latest
+
+        - name: login to docker hub
+          uses: docker/login-action@v1
+          with:
+            username: ${{ DOCKER_HUB_USERNAME }}
+            password: ${{ DOCKER_HUB_ACCESS_TOKEN }}
+
+        - name: push the docker image to docker hub
+          uses: docker/build-push-actions@v2
+          with:
+            context: .
+            dockerfile: Dockerfile
+            push: true
+            tags: ${{ secrefts.DOCKER_HUB_USERNAME }}/rest-api:latest
