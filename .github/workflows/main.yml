@@ -27,7 +27,7 @@
             mvn -B package --file pom.xml
 
         - name: build the docker image
-          uses: docker/build-push-actions@v2
+          uses: docker/build-push-action@v4
           with:
             context: .
             dockerfile: Dockerfile
@@ -41,7 +41,7 @@
             password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
         - name: push the docker image to docker hub
-          uses: docker/build-push-actions@v2
+          uses: docker/build-push-action@v4
           with:
             context: .
             dockerfile: Dockerfile
