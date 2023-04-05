@@ -32,7 +32,7 @@
             context: .
             dockerfile: Dockerfile
             push: false
-            tags: ${{ secrets.DOCKER_HUB_USERNAME }}/rest-api:latest
+            tags: ${{ secrets.DOCKER_HUB_USERNAME }}/rest-api:v1.0.0
 
         - name: login to docker hub
           uses: docker/login-action@v1
@@ -46,4 +46,4 @@
             context: .
             dockerfile: Dockerfile
             push: true
-            tags: ${{ secrets.DOCKER_HUB_USERNAME }}/rest-api:latest
+            tags: ${{ secrets.DOCKER_HUB_USERNAME }}/rest-api:v1.0.0
