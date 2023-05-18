@@ -21,15 +21,7 @@
         - name: unit tests
           run: mvn -B test --file pom.xml
           
-          # SonarQube scan
-        - name: SonarQube Scan
-          uses: kitabisa/sonarqube-action@v1.2.0
-          env:
-            SONAR_SCANNER_OPTS: -X
-          with:
-            host: ${{ secrets.SONARQUBE_HOST }}
-            login: ${{ secrets.SONARQUBE_TOKEN }}
-
+         
         - name: build the app
           run: |
             mvn clean
