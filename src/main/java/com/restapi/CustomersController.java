@@ -20,6 +20,10 @@ public class CustomersController {
     public String createCustomer(){
         return "http POST request to create the customer";
     }
+    @PostMapping
+    public String createCustomer2(){
+        return "http POST request to create the customer2";
+    }
     @PutMapping
     public String updateCustomer(){
         return "http GET request to update the customer details";
